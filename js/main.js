@@ -10,6 +10,25 @@ const ctaBtn = document.getElementById("ctaBtn");
 const callBtn = document.getElementById("callBtn");
 const phoneLink = document.getElementById("phoneLink");
 const heading = document.getElementById("heroHeading");
+const featureGrid = document.getElementById("featureGrid");
+// ---- services data (array of objects) ----
+const services = [
+    {
+        title: "Classic Haircut",
+        text: "Timeless cuts with modern precision tailored to your style",
+        image: "assets/images/feature-1.jpg"
+    },
+    {
+        title: "Beard Trim",
+        text: "Shape and line-up your beard for a clean, shape finish.",
+        image: "assets/images/feature-2.jpg"
+    },
+    {
+        title: "Straight Razor Shave",
+        text: "Hot towel treatment with a smooth tradtional shave.",
+        image: "assets/images/feature-3.jpg"
+    }
+];
 // ------ Helpers / Functions -----
 // Update footer year automatically
 const setCurrentYear = () => {
@@ -77,3 +96,21 @@ if (callBtn) {
     }
 });
 }
+// ---- render features using forEach ----
+const renderFeatures = () => {
+    if (!featureGrid) return;
+    services.forEach(service => {
+        const card = document.createElement("article");
+        card.classList.add("feature-card"); // innerHTML allows us to read or change anything inside of an element it has access to
+        card.innerHTML = `
+        <img src="${service.image}" alt="${service.title}" class="feature-img"
+        />
+        <h3 class="feature-title">${service.title}</h3>
+        <p class="feature-text">${service.text}</p>
+        `; // template literals uses the `${}` and allows u to structure how we want our data returened
+        featureGrid.appendChild(card);
+        });
+    };
+
+// ---- function calls ----
+renderFeatures();
