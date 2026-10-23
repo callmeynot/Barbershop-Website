@@ -12,6 +12,7 @@ const callBtn = document.getElementById("callBtn");
 const phoneLink = document.getElementById("phoneLink");
 const heading = document.getElementById("heroHeading");
 const featureGrid = document.getElementById("featureGrid");
+const siteHeader = document.querySelector(".site-header");
 // ---- services data (array of objects) ----
 const services = [
     {
@@ -68,6 +69,15 @@ const updateHeadingText = (newText) => {
   if (!heading) return;
   heading.textContent = newText;
 };
+// adds the is-scrolled class to the site-header DOM element
+const handleHeaderOnScroll = () => {
+  if (!siteHeader) return;
+  if (window.scrollY > 10) {
+    siteHeader.classList.add("is-scrolled");
+  } else {
+    siteHeader.classList.remove("is-scrolled");
+  }
+};
 // ----- Event Listeners ------
 // 1) Set year on page load
 setCurrentYear();
@@ -104,6 +114,10 @@ if (callBtn) {
     }
 });
 }
+// 6) rounds navbar and makes it sticky
+window.addEventListener("scroll", handleHeaderOnScroll);
+// run once on page load in case user refreshes mid scroll
+handleHeaderOnScroll();
 
 // teaching breakdown
 // array.forEach(item => {
