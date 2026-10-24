@@ -99,7 +99,7 @@ if (mobileMenu) {
 // 4) CTA Button: "book now" (placeholder behavior)
 if (ctaBtn) {
     ctaBtn.addEventListener("click", () => {
-        updateHeadingText("Booking coming next _ great choice!");
+        updateHeadingText("Booking coming next - great choice!");
     });
 }
 // 5) Call Button: try to use the phone number in the footer
